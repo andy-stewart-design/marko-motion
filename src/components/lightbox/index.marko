@@ -1,0 +1,19 @@
+import s from './style.module.css'
+
+<p>${state.isAnimating.toString()}</p>
+
+<button on-click("toggleModal") class=s.trigger>
+    <if(!state.isOpen)>
+        <div key="target" class=s.target style="view-transition-name: foo;">
+            <div class=s.square></div>
+        </div>
+    </if>
+</button>
+
+<dialog key="lightbox" class=s.dialog>
+    <if(state.isOpen)>
+        <div key="target" class=s.target style="view-transition-name: foo;">
+            <div class=s.square></div>
+        </div>
+    </if>
+</dialog>

@@ -1,0 +1,41 @@
+.dialog {
+  --_gutter: 2rem;
+
+  padding: 1rem;
+  outline: unset;
+  border: unset;
+  background: unset;
+  max-width: 100vw;
+  max-height: 100vh;
+
+  &::backdrop {
+    background: black;
+    opacity: 0.75;
+  }
+
+  .target {
+    width: 500px;
+    max-width: 100%;
+  }
+
+  .square {
+    width: 100%;
+  }
+}
+
+.trigger {
+  all: unset;
+  outline: revert;
+  width: 200px;
+
+  .target {
+    width: 100%;
+  }
+}
+
+.square {
+  background: red;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
