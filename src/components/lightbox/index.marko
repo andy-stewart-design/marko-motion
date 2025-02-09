@@ -1,25 +1,29 @@
 import s from "./style.module.css";
 
-<button on-click("toggleModal") class=s.trigger>
-    <if(!state.isOpen)>
-        <div
-            key="target"
-            class=s.target
-            style=state.isAnimating && "view-transition-name: lightbox-element;"
-        >
-            <div class=s.square/>
-        </div>
-    </if>
-</button>
+<section class=s.section>
+    <button on-click("toggleModal") class=s.trigger>
+        <if(!state.isOpen)>
+            <div
+                key="target"
+                class=s.target
+                style=state.isAnimating &&
+                "view-transition-name: lightbox-element;"
+            >
+                <img src="/image-1.avif" alt="">
+            </div>
+        </if>
+    </button>
 
-<dialog key="lightbox" class=s.dialog>
-    <if(state.isOpen)>
-        <div
-            key="target"
-            class=s.target
-            style=state.isAnimating && "view-transition-name: lightbox-element;"
-        >
-            <div class=s.square/>
-        </div>
-    </if>
-</dialog>
+    <dialog key="lightbox" class=s.dialog>
+        <if(state.isOpen)>
+            <div
+                key="target"
+                class=s.target
+                style=state.isAnimating &&
+                "view-transition-name: lightbox-element;"
+            >
+                <img src="/image-1.avif" alt="">
+            </div>
+        </if>
+    </dialog>
+</section>

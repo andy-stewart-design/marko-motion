@@ -1,5 +1,7 @@
+import { tick } from "../../utils/tick";
+
 const DURATION = 350;
-const DELAY = 3000;
+const DELAY = 2000;
 
 export default class CardFlip {
   onCreate() {
@@ -50,24 +52,24 @@ export default class CardFlip {
     const keyframeEffectIn = new KeyframeEffect(target, flipInKeys, flipInOpts);
     const animationIn = new Animation(keyframeEffectIn);
 
-    // Animation callback
+    // Animation callbacks
     const handlePlay = () => {
+      this.state.timeout = setTimeout(() => {
+        requestAnimationFrame(() => loop());
+      }, DELAY);
+    };
+
+    const loop = () => {
       animationOut.play();
       animationOut.finished.then(() => {
         this.state.activeImage =
           (this.state.activeImage + 1) % this.state.images.length;
         animationIn.play();
-        animationIn.finished.then(() => {
-          this.state.timeout = setTimeout(() => {
-            requestAnimationFrame(() => handlePlay());
-          }, DELAY);
-        });
+        animationIn.finished.then(handlePlay);
       });
     };
 
-    this.state.timeout = setTimeout(() => {
-      requestAnimationFrame(() => handlePlay());
-    }, DELAY);
+    handlePlay();
   }
 
   onDestroy() {
