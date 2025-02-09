@@ -26,7 +26,7 @@ export default class CardFlip {
 
     const flipOutOpts = {
       duration: DURATION,
-      easing: "ease-in",
+      easing: "cubic-bezier(.8,-0.6,.95,.65)",
     };
 
     const keyframeEffectOut = new KeyframeEffect(
@@ -44,7 +44,7 @@ export default class CardFlip {
 
     const flipInOpts = {
       duration: DURATION,
-      easing: "ease-out",
+      easing: "cubic-bezier(0.25, 1, 0.5, 1)",
     };
 
     const keyframeEffectIn = new KeyframeEffect(target, flipInKeys, flipInOpts);

@@ -1,3 +1,5 @@
+import { tick } from "../../utils/tick";
+
 export default class Lightbox {
   onCreate() {
     this.state = {
@@ -9,33 +11,39 @@ export default class Lightbox {
 
   onMount() {
     const dialog = this.getEl("lightbox");
-
     const { signal } = this.state.controller;
+
     dialog.addEventListener(
       "cancel",
-      (e) => {
+      async (e) => {
         e.preventDefault();
-        document.startViewTransition(() => {
+        this.state.isAnimating = true;
+
+        await tick();
+
+        const transition = document.startViewTransition(() => {
           this.state.isOpen = false;
           requestAnimationFrame(() => dialog.close());
         });
+
+        transition.finished.then(() => (this.state.isAnimating = false));
       },
       { signal }
     );
   }
 
-  toggleModal() {
+  async toggleModal() {
     const dialog = this.getEl("lightbox");
     this.state.isAnimating = true;
 
-    setTimeout(() => {
-      const transition = document.startViewTransition(() => {
-        this.state.isOpen = true;
-        dialog.showModal();
-      });
+    await tick();
 
-      transition.finished.then(() => (this.state.isAnimating = false));
-    }, 0);
+    const transition = document.startViewTransition(() => {
+      this.state.isOpen = true;
+      dialog.showModal();
+    });
+
+    transition.finished.then(() => (this.state.isAnimating = false));
   }
 
   onRender() {

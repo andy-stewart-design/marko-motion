@@ -1,19 +1,25 @@
-import s from './style.module.css'
-
-<p>${state.isAnimating.toString()}</p>
+import s from "./style.module.css";
 
 <button on-click("toggleModal") class=s.trigger>
     <if(!state.isOpen)>
-        <div key="target" class=s.target style="view-transition-name: foo;">
-            <div class=s.square></div>
+        <div
+            key="target"
+            class=s.target
+            style=state.isAnimating && "view-transition-name: lightbox-element;"
+        >
+            <div class=s.square/>
         </div>
     </if>
 </button>
 
 <dialog key="lightbox" class=s.dialog>
     <if(state.isOpen)>
-        <div key="target" class=s.target style="view-transition-name: foo;">
-            <div class=s.square></div>
+        <div
+            key="target"
+            class=s.target
+            style=state.isAnimating && "view-transition-name: lightbox-element;"
+        >
+            <div class=s.square/>
         </div>
     </if>
 </dialog>

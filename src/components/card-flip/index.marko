@@ -1,11 +1,14 @@
-import s from './style.module.css'
+import s from "./style.module.css";
 
 <section class=s.section>
     <div class=s.card>
         <div key="content" class=s.content>
-            <div class=s.front>
-                <img src=state.images[state.activeImage] />
-            </div>
+            <for|image, index| of=state.images>
+                $ const isActive = index === state.activeImage;
+                <div class=s.front data-active=isActive aria-hidden=!isActive>
+                    <img src=image alt="">
+                </div>
+            </for>
         </div>
     </div>
 </section>
