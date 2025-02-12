@@ -1,8 +1,17 @@
 import { tick } from "../../utils/tick";
 
+const images = [
+  "/image-1.avif",
+  "/image-2.avif",
+  "/image-3.avif",
+  "/image-4.avif",
+];
+
 export default class Lightbox {
   onCreate() {
     this.state = {
+      images: images,
+      activeIndex: null,
       isOpen: false,
       isAnimating: false,
       controller: new AbortController(),

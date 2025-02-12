@@ -3,9 +3,10 @@
 }
 
 .dialog {
-  --_gutter: 2rem;
+  --gutter: 1rem;
 
-  padding: 1rem;
+  padding: var(--gutter);
+  padding: 0;
   outline: unset;
   border: unset;
   background: unset;
@@ -21,7 +22,7 @@
     width: 100%;
 
     img {
-      max-height: calc(100vh - var(--_gutter));
+      max-height: calc(100vh - 2 * var(--gutter));
     }
   }
 
@@ -42,10 +43,12 @@
 
 .target {
   img {
+    display: block;
     width: 100%;
     height: auto;
     border-radius: 1rem;
-    vertical-align: bottom;
+    aspect-ratio: 4/5;
+    /* vertical-align: bottom; */
   }
 }
 
